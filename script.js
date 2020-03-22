@@ -1,3 +1,4 @@
+//declare schedule obj
 var schedule=[
     {time: "9 AM", event:"", hour:"9"},
     {time: "10 AM", event:"", hour:"10"},
@@ -9,7 +10,7 @@ var schedule=[
     {time: "4 PM", event:"", hour:"16"},
     {time: "5 PM", event:"", hour:"17"}
 ];
-
+//check if previous file already existed in local storage
 var usersch = JSON.parse(localStorage.getItem("userdayplan"))
 if(usersch==null){usersch=schedule}
 
@@ -21,18 +22,34 @@ $(document).ready(function(){
     $('#currentDay').text(cday);
     addblock();
     
+//onclick saveBtn => get id from button clicked, get content from previous html element
+//validate if content is empty => alert user
+//set localstorage array using btn id
     $('.saveBtn').on('click',function () {
         var btnid = $(this).attr('id');
-        console.log(btnid)
         var p = $(this).prev().val()
-        console.log(p)
-        usersch[btnid].event = p
-        console.log(usersch)
-        localStorage.setItem('userdayplan',JSON.stringify(usersch));
+        if(p==""){alert("No item has been enter in this time slot")}
+        else{
+            usersch[btnid].event = p
+            console.log(usersch)
+            localStorage.setItem('userdayplan',JSON.stringify(usersch));
+        }
+
+    })
+
+//onclick refreshBtn => remove userdayplan from local storage
+//reload the page
+
+    $('.refreshBtn').on('click',function() {
+        localStorage.clear('userdayplan');
+        location.reload();
+
     })
 
 })
-
+//loop over the length of schedule array and add element
+//call colorMe fn to apply color as needed
+//append element onto page
 
 function addblock(){
     for(i=0;i<schedule.length;i++){
@@ -51,6 +68,10 @@ function addblock(){
         
     }
 }
+
+//get current time with new Date() & gethour()
+//compare to parse in value from schedule array
+//retunr present, past or future depends on result
 
 function colorMe(time){
     var x = new Date();

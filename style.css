@@ -73,6 +73,22 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
+.refreshBtn {
+  border-left: 1px solid black;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background-color: rgb(213, 37, 6);
+  color: white;
+  
+}
+
+.refreshBtn i:hover {
+  font-size: 50px;
+  transition: all .3s ease-in-out;
+}
+
+
+
 footer{
   position:fixed;
   bottom: 0;
