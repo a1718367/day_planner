@@ -17,7 +17,6 @@ if(usersch==null){usersch=schedule}
 
 $(document).ready(function(){
 
-    
     var cday = moment().format('dddd, Do MMM YYYY, h:mm:ss a');
     $('#currentDay').text(cday);
     addblock();
