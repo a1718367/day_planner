@@ -1,5 +1,17 @@
+var schedule=[
+    {time: "9 AM", event:"", hour:"9"},
+    {time: "10 AM", event:"", hour:"10"},
+    {time: "11 AM", event:"", hour:"11"},
+    {time: "12 PM", event:"", hour:"12"},
+    {time: "1 PM", event:"", hour:"13"},
+    {time: "2 PM", event:"", hour:"14"},
+    {time: "3 PM", event:"", hour:"15"},
+    {time: "4 PM", event:"", hour:"16"},
+    {time: "5 PM", event:"", hour:"17"}
+];
+
 var usersch = JSON.parse(localStorage.getItem("userdayplan"))
-if(usersch === null){usersch = schedule;}
+if(usersch==null){usersch=schedule}
 
 
 $(document).ready(function(){
@@ -21,17 +33,6 @@ $(document).ready(function(){
 
 })
 
-var schedule=[
-    {time: "9 AM", event:"", hour:"9"},
-    {time: "10 AM", event:"", hour:"10"},
-    {time: "11 AM", event:"", hour:"11"},
-    {time: "12 PM", event:"", hour:"12"},
-    {time: "1 PM", event:"", hour:"13"},
-    {time: "2 PM", event:"", hour:"14"},
-    {time: "3 PM", event:"", hour:"15"},
-    {time: "4 PM", event:"", hour:"16"},
-    {time: "5 PM", event:"", hour:"17"}
-];
 
 function addblock(){
     for(i=0;i<schedule.length;i++){
@@ -40,7 +41,7 @@ function addblock(){
         var blockcolor = colorMe(hourblock);
         var entryrow = $('<div class="row"'+ "id="+i+">");
         var slotname = $('<div class="col-2 col-lg-1 hour"></div>').text(slothour);
-        var texta = $('<textarea class="col-8 col-lg-10 form-control description '+ blockcolor +'" rows="1"'+"id="+i+'>').text(usersch[i].event);
+        var texta = $('<textarea class="col-8 col-lg-10 form-control description '+ blockcolor +'" rows="1"'+"id="+i+'>').text(usersch[i].event);//
         var savebtn = $('<button class="col-2 col-lg-1 saveBtn"' + 'id='+i+'><i class="far fa-save"></i></button>')
         
         $('#start').append(entryrow);
